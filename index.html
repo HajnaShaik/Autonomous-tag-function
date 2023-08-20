@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Autonomous Tagging System</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo-img">
+            Autonomous Tagging System
+        </div>
+        <h1 class="header-heading">Autonomous Tagging System</h1>
+    </header>
+    <main>
+        <section class="tag-input">
+            <h2>Enter your question:</h2>
+            <form method="POST">
+                <textarea id="questionInput" name="question" rows="5" placeholder="Type your question here..."></textarea>
+                <button type="submit" id="suggestTagsButton" class="hover-effect suggest-button">Suggest Tags</button>
+            </form>
+            <div id="tagSuggestions" class="tag-suggestions">
+                {% if suggested_tags %}
+                    Suggested tags: {{ suggested_tags|join(', ') }}
+                {% endif %}
+            </div>
+            <button id="copyTagsButton" class="copy-tags-button hover-effect">Copy Tags</button>
+            <a id="redirectToStackOverflow" class="redirect-button hover-effect" href="https://stackoverflow.com/">Go to Stack Overflow</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Created by Amritha, Hajna & Shriyash</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
